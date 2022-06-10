@@ -5,4 +5,6 @@ Integrantes:
 	- Jarab, Damián Matías; Legajo N 44.157  
 Curso: 5k4  
 Profesores:
+	- Rubio, Diego Martin  
+	- Gonzalez, Claudio Javier
 	
