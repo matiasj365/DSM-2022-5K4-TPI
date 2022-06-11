@@ -6,7 +6,6 @@ import GlobalStyleSheet from './GlobalStyleSheet';
 
 const PhotoList = (props) => {
   const [photos, setPhotos] = useState(null);
-console.log(props.navigation);
   useEffect(() => {
     const getPhotos = async () => {
       let response;
