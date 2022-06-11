@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, Text, View, Image, Linking } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
-import Button from './Button';
 import axios from 'axios';
 import GlobalStyleSheet from './GlobalStyleSheet';
 const AlbumThumbnail = ({ albumId }) => {

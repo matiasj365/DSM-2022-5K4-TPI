@@ -9,7 +9,7 @@ const AlbumDetail = ({ navigation, album }) => {
 
   return (
     <TouchableHighlight
-      onPress={() => navigation.navigate('photoList', { albumId: album.id })}
+      onPress={() => navigation.navigate('photoList', { albumId: album.id, albumName: album.title._content })}
       underlayColor="white">
       <Card>
         <CardSection>

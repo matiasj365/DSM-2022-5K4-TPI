@@ -27,24 +27,25 @@ export default StyleSheet.create({
     borderBottomWidth: 0,
   },  
   headerStyle: {
-    flex: 0.2,
     marginTop: StatusBar.currentHeight || 0,
     padding: 20,
     margin: 10,
     alignItems: 'center',
+    flexDirection: 'row',
   },
 
   listStyle: {
     flex: .8,
   },
   albumStyle: {
-    backgroundColor: '#f9c2ff',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
   },
   titleStyle: {
+    flexGrow: 1,
     fontSize: 32,
+    textAlign: 'center' 
   },
   cardTitleStyle: {
     fontSize: 16,

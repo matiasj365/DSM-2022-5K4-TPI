@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ActivityIndicator,SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { ActivityIndicator, SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 import axios from 'axios';
 import PhotoDetail from './PhotoDetail';
 import GlobalStyleSheet from './GlobalStyleSheet';
+import BackButton from './BackButton';
 
 const PhotoList = (props) => {
   const [photos, setPhotos] = useState(null);
@@ -36,7 +37,8 @@ const PhotoList = (props) => {
   const renderListHeader = () => {
     return (
       <View style={GlobalStyleSheet.headerStyle} accessibilityRole="header">
-        <Text style={GlobalStyleSheet.titleStyle}>Fotos</Text>
+        <BackButton navigation={props.navigation} />
+        <Text style={GlobalStyleSheet.titleStyle}>Album: {props.route.params.albumName}</Text>
       </View>
     );
   }
