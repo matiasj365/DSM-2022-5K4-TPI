@@ -5,8 +5,7 @@ import CardSection from './CardSection';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import GlobalStyleSheet from './GlobalStyleSheet';
 
-const PhotoDetail = ({ title, imageUrl }) => {
-  console.log(props.navigation);
+const PhotoDetail = ({ title, imageUrl }) => {  
   return (
     <TouchableHighlight
         onPress={() => Linking.openURL(imageUrl)}
