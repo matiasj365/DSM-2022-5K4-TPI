@@ -7,4 +7,3 @@
 	- Rubio, Diego Martin  
 	- Gonzalez, Claudio Javier
 * Curso: 5k4  
-	

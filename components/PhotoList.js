@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { ActivityIndicator,SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 import axios from 'axios';
 import PhotoDetail from './PhotoDetail';
+import GlobalStyleSheet from './GlobalStyleSheet';
 
 const PhotoList = (props) => {
   const [photos, setPhotos] = useState(null);
@@ -19,30 +20,60 @@ const PhotoList = (props) => {
         console.log(error);
       }
     }
-   
+
     getPhotos();
   }, [])
 
-  const renderAlbums = () => {
-    return photos.map((photo) => (
+  const renderAlbums = (photo) => {
+    return (
       <PhotoDetail
-        key={photo.title}
-        title={photo.title}
-        imageUrl={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`}
+        title={photo.item.title}
+        navigation={props.navigation}
+        imageUrl={`https://farm${photo.item.farm}.staticflickr.com/${photo.item.server}/${photo.item.id}_${photo.item.secret}.jpg`}
       />
-    ));
+    );
   }
 
-  return(
+  const renderListHeader = () => {
+    return (
+      <View style={GlobalStyleSheet.headerStyle} accessibilityRole="header">
+        <Text style={GlobalStyleSheet.titleStyle}>Fotos</Text>
+      </View>
+    );
+  }
+
+  return (
     (!photos ?
-        <View style={{flex: 1}}>
-          <Text>Loading...</Text>
-        </View>
+      <View style={GlobalStyleSheet.fullContainerStyle}>
+        <ActivityIndicator size="large" color="#00ff00" style={GlobalStyleSheet.activityIndicatorStyle} />
+      </View>
       :
-        <View style={{flex: 1}}>
-          <ScrollView>{renderAlbums()}</ScrollView>
-        </View>)
-      )
+      <View style={GlobalStyleSheet.fullContainerStyle}>
+        <FlatList style={GlobalStyleSheet.listStyle}
+          data={photos}
+          numColumns={2}
+          renderItem={renderAlbums}
+          keyExtractor={(photo) => photo.id}
+          ListHeaderComponent={renderListHeader}
+        />
+      </View>
+    )
+  )
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
+});
 export default PhotoList;

@@ -1,58 +1,29 @@
 import React from 'react';
-import {Text, View, Image, Linking} from 'react-native';
+import { TouchableHighlight, Text } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
-import Button from './Button';
+import AlbumThumbnail from './AlbumThumbnail';
+import GlobalStyleSheet from './GlobalStyleSheet';
 
-const AlbumDetail = ({navigation, title, albumId}) => {
-  const {
-    headerContentStyle,
-
-    headerTextStyle,
-    imageStyle,
-  } = styles;
+const AlbumDetail = ({ navigation, album }) => {
 
   return (
-    <Card>
-      <CardSection>
-        <View style={headerContentStyle}>
-          <Text style={headerTextStyle}>{title}</Text>
-        </View>
-      </CardSection>
-
-      <CardSection>
-        <Button
-          onPress={() => navigation.navigate('photoList', {albumId: albumId})}>
-          See Now!
-        </Button>
-      </CardSection>
-    </Card>
+    <TouchableHighlight
+      onPress={() => navigation.navigate('photoList', { albumId: album.id })}
+      underlayColor="white">
+      <Card>
+        <CardSection>
+          <AlbumThumbnail albumId={album.id} />
+        </CardSection>
+        <CardSection style={GlobalStyleSheet.cardSectionFooterStyle}>
+          <Text style={GlobalStyleSheet.cardTitleStyle}>{album.title._content}</Text>
+          <Text style={GlobalStyleSheet.cardInfoStyle}>({album.photos})</Text>
+        </CardSection>
+      </Card>
+    </TouchableHighlight>
   );
 };
 
-const styles = {
-  headerContentStyle: {
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-  },
-  headerTextStyle: {
-    fontSize: 18,
-  },
-  thumbnailStyle: {
-    height: 50,
-    width: 50,
-  },
-  thumbnailContainerStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-  },
-  imageStyle: {
-    height: 300,
-    flex: 1,
-    width: null,
-  },
-};
+
 
 export default AlbumDetail;
