@@ -3,7 +3,6 @@ import React from 'react';
 
 import AlbumList from './components/AlbumList';
 import PhotoList from './components/PhotoList';
-import PhotoShow from './components/PhotoShow';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
