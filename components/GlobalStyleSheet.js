@@ -29,7 +29,6 @@ export default StyleSheet.create({
   headerStyle: {
     flex: 0.2,
     marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: "#fff",
     padding: 20,
     margin: 10,
     alignItems: 'center',
@@ -61,8 +60,12 @@ export default StyleSheet.create({
     borderRadius: 20,    
   },
   photoShowStyle: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height, 
+    
+    width: Dimensions.get("window").width*.9,
+    height: Dimensions.get("window").height*.6, 
+    flexShrink: 1,
+    
+
   },
   thumbnailContainerStyle: {
     flex: 1,

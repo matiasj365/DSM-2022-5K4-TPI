@@ -1,16 +1,20 @@
 import React from 'react';
-import { Text, View, Image, Linking} from 'react-native';
+import { Text, View, Image, Linking } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import GlobalStyleSheet from './GlobalStyleSheet';
 
-const PhotoDetail = ({ title, imageUrl }) => {  
+const PhotoDetail = ({ navigation, title, imageUrl }) => {
   return (
     <TouchableHighlight
-        onPress={() => Linking.openURL(imageUrl)}
+      onPress={() => {
+        navigation.navigate('photoShow', {
+          photoTitle: title,
+          photoUrl: imageUrl
+        }); 
+      }}
       underlayColor="white">
-        
       <Card>
         <CardSection>
           <View style={GlobalStyleSheet.thumbnailContainerStyle}>
